@@ -20,3 +20,11 @@ logging:
       example:
         mapper : debug
 
+project:
+  boot:
+    swagger:
+      base-package: com.tzx.springbootlearn.controller
+      title: Springboot学习
+      description: Springboot 学习整合各插件
+      version: 1.0.0
+      enable: true

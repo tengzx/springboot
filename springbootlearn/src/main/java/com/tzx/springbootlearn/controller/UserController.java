@@ -4,6 +4,7 @@ import com.tzx.springbootlearn.model.User;
 import com.tzx.springbootlearn.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,17 @@ public class UserController {
   @GetMapping("/{id}")
   @ApiOperation("根据id查询用户")
   @ApiImplicitParam(name = "id", value = "用户id", defaultValue = "1", required = true)
-  public User GetUser(@PathVariable int id){
+  public User getUser(@PathVariable int id){
     return userService.findById(id);
+  }
+
+  @GetMapping("/findStr")
+  @ApiOperation("查找字符串-测试")
+  @ApiImplicitParams({
+      @ApiImplicitParam(name = "location", value = "地点", defaultValue = "北京"),
+      @ApiImplicitParam(name = "name", value = "姓名", defaultValue = "tengzx", required = true)
+  })
+  public String findStr(String location,String name){
+    return location + "--" + name;
   }
 }

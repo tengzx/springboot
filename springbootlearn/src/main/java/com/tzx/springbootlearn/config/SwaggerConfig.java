@@ -1,5 +1,6 @@
 package com.tzx.springbootlearn.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -13,20 +14,23 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+  @Autowired
+  private ProjectProperties projectProperties;
+
   @Bean
   public Docket createRestApi() {
+    SwaggerProperties swaggerProperties = projectProperties.getSwagger();
+
     return new Docket(DocumentationType.SWAGGER_2)
-        .pathMapping("/")
+        .enable(swaggerProperties.isEnable())
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.tzx.springbootlearn.controller"))
+        .apis(RequestHandlerSelectors.basePackage(swaggerProperties.getBasePackage()))
         .paths(PathSelectors.any())
         .build().apiInfo(new ApiInfoBuilder()
-            .title("SpringBoot整合Swagger")
-            .description("SpringBoot整合Swagger，详细信息......")
-            .version("1.0。0")
-            .contact(new Contact("啊啊啊啊","blog.csdn.net","aaa@gmail.com"))
-            .license("The Apache License")
-            .licenseUrl("http://www.baidu.com")
+            .title(swaggerProperties.getTitle())
+            .description(swaggerProperties.getDescription())
+            .version(swaggerProperties.getVersion())
             .build());
   }
 }
