@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /springBootLearn
+
+spring:
+  datasource:
+    username: csxb2b_factory
+    password: MI09980^80234&6
+    url: jdbc:mysql://10.252.193.44:3306/csx_b2b_factory?useUnicode=true&serverTimezone=CTT&characterEncoding=utf-8&autoReconnect=true&autoReconnectForPools=true&zeroDateTimeBehavior=convertToNull&useSSL=false&useAffectedRows=true&allowMultiQueries=true
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.tzx.springbootlearn.model
+
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+
