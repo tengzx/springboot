@@ -9,6 +9,7 @@
     <version>2.2.1.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>com.tzx</groupId>
   <artifactId>spring-boot-learn</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -16,6 +17,8 @@
   <description>Demo project for Spring Boot</description>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
   </properties>
 
