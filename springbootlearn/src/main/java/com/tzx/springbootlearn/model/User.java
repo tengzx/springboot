@@ -2,6 +2,7 @@ package com.tzx.springbootlearn.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.math.BigDecimal;
 import lombok.Data;
 
 @Data
@@ -15,6 +16,8 @@ public class User {
   private String passWord;
   @ApiModelProperty("用户真实名字")
   private String realName;
+  @ApiModelProperty("金钱")
+  private BigDecimal money;
 
   @Override
   public String toString() {

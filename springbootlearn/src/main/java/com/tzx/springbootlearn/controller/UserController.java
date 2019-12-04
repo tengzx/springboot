@@ -6,9 +6,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +28,13 @@ public class UserController {
   @ApiImplicitParam(name = "id", value = "用户id", defaultValue = "1", required = true)
   public User getUser(@PathVariable int id){
     return userService.findById(id);
+  }
+
+
+  @PostMapping("/{id}/{money}")
+  @ApiOperation("根据id修改金钱")
+  public Boolean updateById(@PathVariable int id,@PathVariable BigDecimal money){
+    return userService.updateById(id,money);
   }
 
   @GetMapping("/findStr")
